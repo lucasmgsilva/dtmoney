@@ -59,7 +59,7 @@ interface RadioBoxProps {
 }
 
  const colors = {
-     green:  ,
+     green: '#33cc95',
      red: '#e52e4d'
  }
  
