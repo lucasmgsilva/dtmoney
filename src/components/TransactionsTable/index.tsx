@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { Api } from "../../services/api";
+import { api } from "../../services/api";
 import { Container } from "./styles";
 
 export const TransactionsTable = () => {
     useEffect(() => {
-        Api.get('/transactions')
+        api.get('/transactions')
             .then(response => console.log(response.data));
     }, [])
 
