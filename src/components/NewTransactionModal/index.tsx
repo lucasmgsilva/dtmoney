@@ -12,7 +12,7 @@ interface NewTransactionModalProps {
     onRequestClose: () => void
 }
 
-export const NewTransactionModal = ({isOpen, onRequestClose}: NewTransactionModalProps) => {
+export const NewTransactionModal = ({isOpen,  onRequestClose}: NewTransactionModalProps) => {
     const { createTransaction } = useContext(TransactionsContext);
 
     const [title, setTitle] = useState('');
@@ -20,13 +20,19 @@ export const NewTransactionModal = ({isOpen, onRequestClose}: NewTransactionModa
     const [category, setCategory] = useState(''); 
     const [type, setType] = useState('deposit');
 
-    const handleCreateNewTransaction = (e: FormEvent) => {
+    const handleCreateNewTransaction = async (e: FormEvent) => {
       e.preventDefault();
 
-      createTransaction({
+      await createTransaction({
         title, amount, category, type
       });
-      
+
+      setTitle('');
+      setAmount(0);
+      setCategory('');
+      setType('deposit');
+
+      onRequestClose();
     }
 
     return (
